@@ -25,6 +25,7 @@
     "copy:js": "cpx js/**/*.js dist/js",
     "copy:html": "cpx index.html dist",
     "copy:todomvc": "cpx 'node_modules/todomvc*/**/*.{js,css}' dist",
-    "copy": "npm-run-all -p copy:js copy:html copy:todomvc"
+    "copy": "npm-run-all -p copy:js copy:html copy:todomvc",
+    "postinstall": "npm-run-all -s build"
   }
 }
