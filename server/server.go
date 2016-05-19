@@ -12,7 +12,7 @@ func main() {
 		addr = ":" + port
 	}
 
-	fs := http.FileServer(http.Dir("../dist"))
+	fs := http.FileServer(http.Dir("dist"))
 	http.Handle("/", fs)
 
 	log.Println("Listening on port", addr, "...")
