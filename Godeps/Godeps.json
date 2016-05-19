@@ -1,5 +1,5 @@
 {
-	"ImportPath": ".",
+	"ImportPath": "github.com/t-murano/todomvc-vanillajs-meetup45",
 	"GoVersion": "go1.6",
 	"GodepVersion": "v69",
 	"Packages": [
