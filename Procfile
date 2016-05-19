@@ -1,1 +1,1 @@
-web: todomvc-vanillajs
+web: todomvc-vanillajs-meetup45
