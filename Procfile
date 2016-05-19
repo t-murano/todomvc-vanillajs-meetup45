@@ -1,1 +1,1 @@
-web: $(basename `pwd`)
+web: todomvc-vanillajs
