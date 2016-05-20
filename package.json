@@ -8,9 +8,13 @@
     "todomvc-common": "^1.0.1"
   },
   "devDependencies": {
-    "jasmine-core": "^2.0.0",
     "eslint": "^2.9.0",
-    "esprima": "^2.7.2"
+    "esprima": "^2.7.2",
+    "jasmine": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0"
   },
   "eslintConfig": {
     "parser": "esprima",
@@ -19,7 +23,9 @@
     }
   },
   "scripts": {
-    "test": "eslint --quiet js",
+    "test:phantomjs": "karma start test/karma.conf.js --single-run --browsers PhantomJS",
+    "test:chrome": "karma start test/karma.conf.js --single-run --browsers Chrome,Chrome_without_security",
+    "lint": "eslint --quiet js",
     "build": "npm-run-all -s clean copy",
     "clean": "rimraf dist",
     "copy:js": "cpx js/**/*.js dist/js",
