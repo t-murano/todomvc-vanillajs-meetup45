@@ -108,6 +108,20 @@
 		}
 	};
 
+	/**
+	 * Updates the text within the "Clear all" button
+	 *
+	 * @param  {[type]} completedTodos The number of completed todos.
+	 * @returns {string} String containing the count
+	 */
+	Template.prototype.clearAllButton = function (completedTodos) {
+		if (completedTodos === 0) {
+			return 'Clear all';
+		} else {
+			return '';
+		}
+	};
+
 	// Export to window
 	window.app = window.app || {};
 	window.app.Template = Template;
