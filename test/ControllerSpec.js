@@ -149,6 +149,19 @@ describe('controller', function () {
 		});
 	});
 
+	it('should set the "clear all" button', function () {
+		var todo = {id: 42, title: 'my todo', completed: false};
+		setUpModel([todo]);
+
+		subject.setView('');
+
+		expect(view.render).toHaveBeenCalledWith('clearAllButton', {
+			completed: 0,
+			visible: true
+		});
+	});
+
+
 	it('should highlight "All" filter by default', function () {
 		setUpModel([]);
 
