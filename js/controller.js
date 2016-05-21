@@ -241,7 +241,7 @@
 			});
 			self.view.render('clearAllButton', {
 				completed: todos.completed,
-				visible: todos.completed > 0
+				visible: todos.completed === 0
 			});
 
 			self.view.render('toggleAll', {checked: todos.completed === todos.total});
