@@ -1,7 +1,7 @@
 (function (window) {
 	'use strict';
 
-	/**
+  /**
 	 * Takes a model and view and acts as the controller between them
 	 *
 	 * @constructor
@@ -39,6 +39,10 @@
 
 		self.view.bind('removeCompleted', function () {
 			self.removeCompletedItems();
+		});
+
+		self.view.bind('removeAll', function () {
+			self.removeAllItems();
 		});
 
 		self.view.bind('toggleAll', function (status) {
@@ -172,6 +176,20 @@
 	};
 
 	/**
+	 * Will remove all items from the DOM and storage.
+	 */
+	Controller.prototype.removeAllItems = function () {
+		var self = this;
+		self.model.read(function (data) {
+			data.forEach(function (item) {
+				self.removeItem(item.id);
+			});
+		});
+
+		self._filter();
+	};
+
+	/**
 	 * Give it an ID of a model and a checkbox and it will update the item
 	 * in storage based on the checkbox's state.
 	 *
@@ -218,6 +236,10 @@
 		self.model.getCount(function (todos) {
 			self.view.render('updateElementCount', todos.active);
 			self.view.render('clearCompletedButton', {
+				completed: todos.completed,
+				visible: todos.completed > 0
+			});
+			self.view.render('clearAllButton', {
 				completed: todos.completed,
 				visible: todos.completed > 0
 			});
