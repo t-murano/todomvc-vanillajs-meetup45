@@ -21,6 +21,7 @@
 		this.$todoList = qs('.todo-list');
 		this.$todoItemCounter = qs('.todo-count');
 		this.$clearCompleted = qs('.clear-completed');
+		this.$clearAll = qs('.clear-all');
 		this.$main = qs('.main');
 		this.$footer = qs('.footer');
 		this.$toggleAll = qs('.toggle-all');
@@ -38,6 +39,11 @@
 	View.prototype._clearCompletedButton = function (completedCount, visible) {
 		this.$clearCompleted.innerHTML = this.template.clearCompletedButton(completedCount);
 		this.$clearCompleted.style.display = visible ? 'block' : 'none';
+	};
+
+	View.prototype._clearAllButton = function (completedCount, visible) {
+		this.$clearAll.innerHTML = this.template.clearAllButton(completedCount);
+		this.$clearAll.style.display = visible ? 'block' : 'none';
 	};
 
 	View.prototype._setFilter = function (currentPage) {
@@ -106,6 +112,9 @@
 			},
 			clearCompletedButton: function () {
 				self._clearCompletedButton(parameter.completed, parameter.visible);
+			},
+			clearAllButton: function () {
+				self._clearAllButton(parameter.completed, parameter.visible);
 			},
 			contentBlockVisibility: function () {
 				self.$main.style.display = self.$footer.style.display = parameter.visible ? 'block' : 'none';
@@ -179,6 +188,11 @@
 
 		} else if (event === 'removeCompleted') {
 			$on(self.$clearCompleted, 'click', function () {
+				handler();
+			});
+
+		} else if (event === 'removeAll') {
+			$on(self.$clearAll, 'click', function () {
 				handler();
 			});
 
